@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis XVI Años - Paula</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <title>Mis XV Años - Paula</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Premium: Cherry Red + Maroon + Noir Black + Cotton */
-            --primary-dark: #630000; /* Maroon */
-            --primary: #810100; /* Cherry Red */
-            --primary-light: #ab0d0c;
-            --primary-glass: rgba(129, 1, 0, 0.15);
+            /* Paleta Premium Editorial */
+            --maroon: #630000; 
+            --cherry-red: #810100;
+            --cherry-light: #ab0d0c;
+            --red-glass: rgba(129, 1, 0, 0.08);
             
             --gold-primary: #d4af37;
             --gold-light: #f9e596;
             --gold-dark: #9e7f1e;
             
-            --text-main: #1B1717; /* Noir Black */
-            --text-muted: #3a3232;
+            --noir-black: #1B1717;
+            --text-muted: #4a4040;
             
-            --bg-glass: rgba(237, 235, 221, 0.85); /* Cotton Glass */
-            --bg-glass-alt: rgba(237, 235, 221, 0.95);
-            
-            /* Fondo Noir Black */
-            --bg-dark: #1B1717;
+            --cotton: #EDEBDD; 
+            --cotton-glass: rgba(237, 235, 221, 0.85);
+            --white-glass: rgba(255, 255, 255, 0.6);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,45 +33,41 @@
             width: 100%; min-height: 100vh;
             margin: 0; padding: 0;
             font-family: 'Cormorant Garamond', Georgia, serif;
-            background-color: var(--bg-dark); 
-            color: var(--text-main);
-            overflow: hidden; /* Se bloquea el scroll mientras el sobre está cerrado */
+            background-color: var(--cotton); 
+            color: var(--noir-black);
+            overflow: hidden; 
         }
         
-        /* Se habilita el scroll cuando la invitación se abre */
         body.content-active {
             overflow-y: auto; 
             overflow-x: hidden;
         }
 
         /* ====== ANIMACIONES DE SCROLL (REVEAL) ====== */
-        .reveal { opacity: 0; transform: translateY(35px); transition: all 1s cubic-bezier(0.25, 1, 0.2, 1); will-change: opacity, transform; }
-        .reveal-left { opacity: 0; transform: translateX(-35px); transition: all 1s cubic-bezier(0.25, 1, 0.2, 1); }
-        .reveal-right { opacity: 0; transform: translateX(35px); transition: all 1s cubic-bezier(0.25, 1, 0.2, 1); }
-        .reveal-scale { opacity: 0; transform: scale(0.92); transition: all 1s cubic-bezier(0.25, 1, 0.2, 1); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1); will-change: opacity, transform; }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1); }
+        .reveal-scale { opacity: 0; transform: scale(0.95); transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1); }
         
         .reveal.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active {
             opacity: 1; transform: translate(0) scale(1);
         }
         
-        .delay-1 { transition-delay: 0.15s; }
-        .delay-2 { transition-delay: 0.3s; }
-        .delay-3 { transition-delay: 0.45s; }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
 
-        /* ====== SOBRE REDISEÑADO ====== */
+        /* ====== SOBRE ====== */
         #envelope-screen {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
-            background: url('assets/fondosobre.jpg') no-repeat center center;
-            background-color: var(--bg-dark); /* Fallback */
-            background-size: cover;
+            background: radial-gradient(circle at center, var(--maroon) 0%, var(--noir-black) 100%);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 1000;
             transition: opacity 1.2s ease-in-out, visibility 1.2s;
         }
         #envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        /* ====== LLUVIA DE GLITTER EXCLUSIVA DEL SOBRE ====== */
         #glitter-rain-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 25; overflow: hidden;
@@ -82,14 +76,9 @@
             position: absolute; top: -20px; border-radius: 50%; opacity: 0;
             animation: fall-glitter linear infinite;
         }
-        .glitter-drop.star {
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            border-radius: 0;
-        }
-        .glitter-drop.diamond {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            border-radius: 0;
-        }
+        .glitter-drop.star { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); border-radius: 0; }
+        .glitter-drop.diamond { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); border-radius: 0; }
+        
         @keyframes fall-glitter {
             0% { transform: translate(0, -20px) rotate(0deg) scale(0); opacity: 0; }
             10% { opacity: 1; transform: translate(calc(var(--drift) * 0.2), 10vh) rotate(45deg) scale(1.2); }
@@ -100,272 +89,262 @@
         .envelope-wrapper {
             position: relative; cursor: pointer; z-index: 10;
             display: flex; flex-direction: column; align-items: center;
-            width: 310px;
-            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            width: 320px;
+            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
         }
-        .envelope-wrapper:hover { transform: translateY(-8px) scale(1.03); }
+        .envelope-wrapper:hover { transform: translateY(-10px) scale(1.02); }
 
-        .envelope-body { position: relative; width: 310px; height: 210px; margin: 0 auto; }
+        .envelope-body { position: relative; width: 320px; height: 220px; margin: 0 auto; }
         .env-svg-main {
-            width: 310px; height: 210px;
-            filter: drop-shadow(0 25px 45px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(129,1,0,0.3));
+            width: 320px; height: 220px;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.6)) drop-shadow(0 0 25px rgba(129,1,0,0.4));
             transition: filter 0.4s ease;
-        }
-        .envelope-wrapper:hover .env-svg-main {
-            filter: drop-shadow(0 30px 55px rgba(0,0,0,0.9)) drop-shadow(0 0 30px rgba(212,175,55,0.4));
         }
 
         .env-name-label {
-            position: absolute; top: 70px; left: 0; right: 0; text-align: center;
-            font-family: 'Pinyon Script', cursive; font-size: 50px;
-            color: var(--gold-light);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.4);
+            position: absolute; top: 75px; left: 0; right: 0; text-align: center;
+            font-family: 'Pinyon Script', cursive; font-size: 55px;
+            color: var(--cotton);
+            text-shadow: 0 3px 15px rgba(0,0,0,0.5);
             pointer-events: none; z-index: 15;
         }
         .env-date-label {
-            position: absolute; top: 135px; left: 0; right: 0; text-align: center;
-            font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 5px;
-            color: var(--gold-primary); pointer-events: none; z-index: 15; text-transform: uppercase;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            position: absolute; top: 145px; left: 0; right: 0; text-align: center;
+            font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 6px;
+            color: var(--gold-light); pointer-events: none; z-index: 15; text-transform: uppercase;
         }
 
-        .env-flap-group { transform-origin: 155px 0px; transform-box: fill-box; transition: transform 0.8s cubic-bezier(0.4,0,0.2,1) 0.1s; }
+        .env-flap-group { transform-origin: 160px 0px; transform-box: fill-box; transition: transform 0.9s cubic-bezier(0.4,0,0.2,1) 0.1s; }
         .envelope-wrapper.open .env-flap-group { transform: rotateX(-176deg); }
 
         .letter-peek {
             position: absolute; left: 50%; transform: translateX(-50%);
-            width: 270px; background: linear-gradient(180deg, #EDEBDD 0%, #e0ddd0 100%);
-            border-radius: 4px; border: 1px solid rgba(212,175,55,0.4);
+            width: 280px; background: var(--cotton);
+            border-radius: 4px; border: 1px solid var(--gold-primary);
             z-index: 5; overflow: hidden; top: 20px; height: 0; opacity: 0;
-            transition: height 0.7s cubic-bezier(0.22,1,0.36,1) 0.7s, opacity 0.5s ease 0.7s, top 0.7s cubic-bezier(0.22,1,0.36,1) 0.7s;
+            transition: height 0.8s cubic-bezier(0.22,1,0.36,1) 0.7s, opacity 0.5s ease 0.7s, top 0.8s cubic-bezier(0.22,1,0.36,1) 0.7s;
             display: flex; align-items: flex-start; justify-content: center;
-            padding-top: 15px; box-shadow: 0 -10px 30px rgba(0,0,0,0.4);
+            padding-top: 20px; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
         }
-        .envelope-wrapper.open .letter-peek { height: 85px; opacity: 1; top: -45px; }
-        .letter-peek-inner { text-align: center; opacity: 0; transition: opacity 0.4s ease 1.2s; }
+        .envelope-wrapper.open .letter-peek { height: 95px; opacity: 1; top: -55px; }
+        .letter-peek-inner { text-align: center; opacity: 0; transition: opacity 0.5s ease 1.3s; }
         .envelope-wrapper.open .letter-peek-inner { opacity: 1; }
-        .letter-peek-name { font-family: 'Pinyon Script', cursive; font-size: 32px; color: var(--primary); line-height: 1; }
-        .letter-peek-date { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--gold-dark); margin-top: 4px; text-transform: uppercase; }
+        .letter-peek-name { font-family: 'Pinyon Script', cursive; font-size: 36px; color: var(--cherry-red); line-height: 1; }
+        .letter-peek-date { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 4px; color: var(--maroon); margin-top: 5px; text-transform: uppercase; font-weight: 600;}
 
         .wax-seal {
-            position: absolute; top: 140px; left: 50%; transform: translateX(-50%);
-            width: 65px; height: 65px; z-index: 20;
-            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.2s, opacity 0.4s ease 0.15s;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
+            position: absolute; top: 145px; left: 50%; transform: translateX(-50%);
+            width: 70px; height: 70px; z-index: 20;
+            transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.2s, opacity 0.4s ease 0.15s;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
         }
         .envelope-wrapper.open .wax-seal { transform: translateX(-50%) scale(0) rotate(45deg); opacity: 0; }
 
         .hint-text {
-            margin-top: 35px; text-align: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px;
-            color: var(--gold-primary); animation: pulse 2.5s infinite; text-transform: uppercase; width: 310px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            margin-top: 45px; text-align: center; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 6px;
+            color: var(--gold-primary); animation: pulse 2.5s infinite; text-transform: uppercase; width: 320px;
         }
 
         /* ====== MAIN ====== */
         #main-invitation {
             position: relative; display: flex; flex-direction: column; align-items: center;
-            padding: 50px 15px; 
+            padding: 60px 15px; 
         }
         
         #main-invitation::before {
             content: ''; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(27, 23, 23, 0.85), rgba(27, 23, 23, 0.95)), url('assets/imagen.jpg') no-repeat center center;
+            background: linear-gradient(rgba(237, 235, 221, 0.92), rgba(237, 235, 221, 0.98)), url('assets/imagen.jpg') no-repeat center center;
             background-size: cover; z-index: -1; will-change: transform;
         }
 
-        /* ====== FRAME DE CRISTAL ====== */
+        /* ====== FRAME EDITORIAL ====== */
         .invitation-frame {
-            max-width: 520px; width: 100%;
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            padding: 55px 30px; text-align: center; position: relative;
-            background: var(--bg-glass);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.7) inset, 0 0 30px rgba(212,175,55,0.1) inset;
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 6px; overflow: visible;
+            max-width: 540px; width: 100%;
+            background: var(--cotton);
+            border: 1px solid rgba(129, 1, 0, 0.2);
+            padding: 60px 35px; text-align: center; position: relative;
+            box-shadow: 0 30px 60px rgba(27,23,23,0.1), 0 0 40px rgba(255,255,255,0.8) inset;
+            border-radius: 2px; overflow: visible;
+        }
+        
+        .invitation-frame::before {
+            content:''; position:absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px solid var(--gold-primary); pointer-events: none; opacity: 0.6;
         }
         .invitation-frame::after {
-            content:''; position:absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid rgba(129, 1, 0, 0.2); pointer-events: none; border-radius: 4px;
+            content:''; position:absolute; top: 16px; left: 16px; right: 16px; bottom: 16px;
+            border: 1px solid var(--cherry-red); pointer-events: none; opacity: 0.2;
         }
 
-        /* ====== FOTO HERO ====== */
+        /* ====== FOTO HERO (EDITORIAL ARCH) ====== */
         .hero-photo-wrap {
-            width: 250px; height: 330px; margin: 0 auto 30px auto;
-            border-radius: 125px 125px 0 0; padding: 8px; 
-            background: linear-gradient(135deg, rgba(237,235,221,1), rgba(237,235,221,0.6));
+            width: 260px; height: 360px; margin: 0 auto 40px auto;
+            border-radius: 130px 130px 0 0; padding: 10px; 
+            background: var(--white-glass);
             border: 1px solid var(--gold-primary);
-            box-shadow: 0 20px 40px rgba(27, 23, 23, 0.3), 0 0 20px rgba(212,175,55,0.2);
+            box-shadow: 0 25px 45px rgba(99, 0, 0, 0.15);
             position: relative;
         }
-        .hero-photo-wrap::before {
-            content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border-radius: 130px 130px 0 0; border: 1px dashed rgba(212,175,55,0.6); pointer-events: none;
-        }
-        .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 117px 117px 0 0; filter: contrast(1.05); }
+        .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 120px 120px 0 0; filter: contrast(1.05) saturate(1.1); }
 
-        /* ====== TIPOGRAFÍA ====== */
-        .hashtag-text { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 26px; color: var(--primary); margin: 10px 0 25px 0; letter-spacing: 1px; font-weight: 500; }
-        .section-heading { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 32px; font-weight: 600; letter-spacing: 1px; color: var(--primary); margin-bottom: 22px; line-height: 1.3; }
-        .section-heading-sm { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 26px; font-weight: 500; letter-spacing: 1px; color: var(--primary); margin-bottom: 12px; }
-        .section-tag { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 20px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+        /* ====== TIPOGRAFÍA EDITORIAL ====== */
+        .hashtag-text { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 24px; color: var(--cherry-red); margin: 15px 0 30px 0; letter-spacing: 2px; font-weight: 500; }
         
-        .main-title { font-family:'Pinyon Script',cursive; font-size: 110px; color: var(--primary-dark); margin-bottom: 5px; text-shadow: 0 2px 4px rgba(237,235,221,0.9), 0 0 15px rgba(212,175,55,0.3); line-height: 1; }
+        .section-heading { font-family: 'Bodoni Moda', serif; font-size: 38px; font-weight: 700; letter-spacing: 2px; color: var(--maroon); margin-bottom: 25px; line-height: 1.2; text-transform: uppercase;}
+        .section-heading-sm { font-family: 'Bodoni Moda', serif; font-size: 28px; font-weight: 600; letter-spacing: 2px; color: var(--cotton); margin-bottom: 15px; text-transform: uppercase;}
         
-        .phrase { font-family:'EB Garamond', serif; font-style:italic; font-size: 22px; color: var(--text-main); line-height: 1.6; margin-bottom: 35px; padding: 0 15px; font-weight: 500; }
-        .family-names { font-family:'Cormorant Garamond',serif; font-size: 26px; font-weight: 600; font-style:italic; color: var(--text-main); line-height: 1.5; margin-top: 8px; }
-        .info-label { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; color: var(--primary); text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
-        .info-block { margin-bottom: 32px; }
+        .section-tag { font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 5px; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 15px; font-weight: 700; }
+        
+        .main-title { font-family:'Pinyon Script',cursive; font-size: 120px; color: var(--cherry-red); margin-bottom: 5px; line-height: 0.9; text-shadow: 2px 2px 0px rgba(255,255,255,0.8); }
+        
+        .phrase { font-family:'Cormorant Garamond', serif; font-style:italic; font-size: 24px; color: var(--noir-black); line-height: 1.5; margin-bottom: 40px; padding: 0 10px; font-weight: 500; }
+        
+        .family-names { font-family:'Bodoni Moda',serif; font-size: 24px; font-weight: 600; font-style:italic; color: var(--cherry-red); line-height: 1.4; margin-top: 10px; }
+        .info-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px; color: var(--noir-black); text-transform: uppercase; margin-bottom: 5px; font-weight: 700; }
+        .info-block { margin-bottom: 35px; }
 
-        /* ====== DIVIDER ORNATE ====== */
-        .divider-ornate { display:flex; align-items:center; justify-content:center; gap: 12px; margin: 35px auto; width: 85%; }
-        .divider-ornate::before, .divider-ornate::after { content:''; flex:1; height:1px; background:linear-gradient(to right, transparent, var(--gold-primary)); }
-        .divider-ornate::after { background:linear-gradient(to left, transparent, var(--gold-primary)); }
-        .divider-ornate-diamond { width: 8px; height: 8px; background: var(--primary); transform: rotate(45deg); flex-shrink:0; border: 1px solid var(--gold-primary); outline: 1px solid transparent; animation: breathe 3s infinite; }
-        @keyframes breathe { 0%,100%{transform:rotate(45deg) scale(1); box-shadow:0 0 0 rgba(212,175,55,0);} 50%{transform:rotate(45deg) scale(1.1); box-shadow:0 0 10px rgba(212,175,55,0.8);} }
+        /* ====== DIVIDER EDITORIAL ====== */
+        .divider-ornate { display:flex; align-items:center; justify-content:center; gap: 15px; margin: 40px auto; width: 90%; }
+        .divider-ornate::before, .divider-ornate::after { content:''; flex:1; height:1px; background: var(--maroon); opacity: 0.3; }
+        .divider-ornate-diamond { width: 10px; height: 10px; background: var(--gold-primary); transform: rotate(45deg); flex-shrink:0; }
 
-        /* ====== COUNTDOWN ====== */
-        .countdown-grid { display:flex; justify-content:center; gap:12px; margin: 20px auto 10px auto; max-width: 380px; }
-        .countdown-item { flex:1; background: linear-gradient(135deg, rgba(237,235,221,0.9), rgba(237,235,221,0.7)); border: 1px solid rgba(212,175,55,0.4); padding: 15px 5px; border-radius: 6px; box-shadow: 0 8px 20px rgba(27, 23, 23, 0.2); }
-        .countdown-number { font-family:'Cinzel',serif; font-size: 28px; font-weight: 500; color: var(--primary); display:block; text-shadow: 1px 1px 0 #fff; }
-        .countdown-label { font-family:'Montserrat',sans-serif; font-size: 10px; text-transform:uppercase; letter-spacing: 3px; color: var(--text-muted); font-weight: 600; margin-top: 4px; display:block;}
+        /* ====== COUNTDOWN EDITORIAL ====== */
+        .countdown-grid { display:flex; justify-content:center; gap:15px; margin: 20px auto 10px auto; max-width: 400px; }
+        .countdown-item { flex:1; background: var(--cotton); border: 1px solid rgba(212,175,55,0.6); padding: 18px 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .countdown-number { font-family:'Bodoni Moda',serif; font-size: 32px; font-weight: 700; color: var(--maroon); display:block; line-height: 1;}
+        .countdown-label { font-family:'Cinzel',sans-serif; font-size: 10px; text-transform:uppercase; letter-spacing: 4px; color: var(--cherry-red); font-weight: 600; margin-top: 8px; display:block;}
 
         /* ====== BLOQUES INTERCALADOS ====== */
-        .bloque-vidrio, .bloque-vidrio-alt {
-            border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 40px 25px; margin: 0 -15px; position: relative;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        .bloque-claro {
+            background: var(--white-glass);
+            border: 1px solid rgba(129,1,0,0.15); padding: 45px 25px; margin: 0 -15px; position: relative;
+            box-shadow: 0 15px 35px rgba(99,0,0,0.05);
         }
-        .bloque-vidrio { background: linear-gradient(135deg, var(--primary-glass), rgba(237,235,221,0.4)); border-top: 1px solid rgba(237,235,221,0.6); }
-        .bloque-vidrio-alt { background: linear-gradient(135deg, rgba(237,235,221,0.6), rgba(237,235,221,0.4)); }
 
         .bloque-bugambilia {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--cherry-red), var(--maroon));
             border: 1px solid var(--gold-primary);
-            border-radius: 12px; padding: 45px 25px; margin: 0 -20px; position: relative;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1) inset;
-            color: #EDEBDD;
+            padding: 55px 25px; margin: 0 -35px; position: relative;
+            box-shadow: 0 20px 40px rgba(99,0,0,0.25);
+            color: var(--cotton);
         }
         
-        .bloque-bugambilia .section-heading,
-        .bloque-bugambilia .section-heading-sm { color: var(--gold-light); text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .bloque-bugambilia .section-heading { color: var(--cotton); text-shadow: 0 2px 4px rgba(0,0,0,0.3); border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 15px; display: inline-block;}
         .bloque-bugambilia .section-tag { color: var(--gold-light); }
         .bloque-bugambilia .info-label { color: var(--gold-light); }
         .bloque-bugambilia .family-names, 
-        .bloque-bugambilia .ubicacion-direccion { color: #EDEBDD; }
-        .bloque-bugambilia .rsvp-intro { color: rgba(237,235,221,0.95); }
+        .bloque-bugambilia .ubicacion-direccion { color: var(--cotton); }
+        .bloque-bugambilia .rsvp-intro { color: rgba(237,235,221,0.9); }
         
         .bloque-bugambilia .btn-confirmar:not(.btn-outline) {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--text-main); border: none;
+            background: var(--cotton);
+            color: var(--maroon); border: none; font-weight: 700;
         }
-        .bloque-bugambilia .btn-confirmar svg { fill: var(--text-main); }
+        .bloque-bugambilia .btn-confirmar svg { fill: var(--maroon); }
+        .bloque-bugambilia .btn-confirmar:hover { background: var(--gold-light); }
         
         .bloque-bugambilia .btn-outline {
-            border-color: var(--gold-primary); color: var(--gold-primary); background: transparent;
+            border-color: var(--gold-light); color: var(--gold-light); background: transparent;
         }
-        .bloque-bugambilia .btn-outline:hover { background: rgba(212,175,55,0.1); color: var(--gold-light); }
-        .bloque-bugambilia .btn-outline svg { fill: var(--gold-primary); }
+        .bloque-bugambilia .btn-outline:hover { background: rgba(255,255,255,0.1); color: var(--cotton); border-color: var(--cotton);}
+        .bloque-bugambilia .btn-outline svg { fill: var(--gold-light); }
 
-        .bloque-bugambilia .countdown-item {
-            background: rgba(27,23,23,0.3); border: 1px solid rgba(212,175,55,0.4); backdrop-filter: blur(5px);
-        }
-        .bloque-bugambilia .countdown-number { color: #EDEBDD; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
-        .bloque-bugambilia .countdown-label { color: rgba(237,235,221,0.8); }
-
-        /* ====== CALENDARIO RESPONSIVO ====== */
-        .calendar-widget { margin-top:20px; background:rgba(237,235,221,0.6); border:1px solid rgba(212,175,55,0.5); border-radius:12px; overflow:hidden; box-shadow: 0 10px 25px rgba(27,23,23,0.2); }
-        .calendar-header { padding: 20px 10px 15px; text-align:center; position:relative; border-bottom: 1px solid rgba(212,175,55,0.3); }
-        .calendar-year { font-family:'Cinzel',serif; font-size:12px; letter-spacing:6px; color: var(--gold-dark); text-transform:uppercase; font-weight: 600;}
-        .calendar-month { margin-top:8px; font-family: 'Pinyon Script', cursive; font-size:48px; color:var(--primary); line-height: 1;}
-        .calendar-body { padding: 15px 10px; }
+        /* ====== CALENDARIO ====== */
+        .calendar-widget { margin-top:25px; background:var(--white-glass); border:1px solid rgba(129,1,0,0.2); overflow:hidden; box-shadow: 0 15px 30px rgba(99,0,0,0.08); padding: 10px; }
+        .calendar-inner { border: 1px dashed rgba(212,175,55,0.6); padding: 15px; }
+        .calendar-header { padding: 10px 10px 20px; text-align:center; position:relative; border-bottom: 1px solid rgba(129,1,0,0.1); }
+        .calendar-year { font-family:'Cinzel',serif; font-size:14px; letter-spacing:8px; color: var(--maroon); text-transform:uppercase; font-weight: 700;}
+        .calendar-month { margin-top:10px; font-family: 'Bodoni Moda', serif; font-size:42px; font-style: italic; color:var(--cherry-red); line-height: 1;}
+        .calendar-body { padding: 20px 10px 10px; }
         .calendar-days-header { display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:15px; }
-        .calendar-day-name { text-align:center; font-family:'Montserrat', sans-serif; font-size:clamp(8px, 2.5vw, 11px); letter-spacing:1px; color:var(--text-muted); text-transform:uppercase; font-weight: 700;}
-        .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap: clamp(4px, 1.5vw, 10px); }
+        .calendar-day-name { text-align:center; font-family:'Cinzel', sans-serif; font-size:12px; letter-spacing:2px; color:var(--text-muted); font-weight: 700;}
+        .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap: 8px; }
         .cal-day { 
-            width: clamp(28px, 8vw, 38px); height: clamp(28px, 8vw, 38px); 
+            width: 32px; height: 32px; 
             margin:auto; display:flex; align-items:center; justify-content:center; 
-            font-family: 'Cormorant Garamond', serif; font-size:clamp(14px, 4.5vw, 20px); 
-            color:var(--text-main); font-weight: 600; border-radius:50%; 
+            font-family: 'Cormorant Garamond', serif; font-size: 20px; 
+            color:var(--noir-black); font-weight: 600; 
         }
         .cal-day.empty { opacity:0; }
-        .cal-day.highlight { background: var(--primary); color:#EDEBDD; font-weight:700; box-shadow: 0 4px 12px rgba(129,1,0,0.5); border: 1px solid var(--primary-light);}
+        .cal-day.highlight { background: var(--maroon); color:var(--cotton); font-weight:700; border-radius: 50%; box-shadow: 0 4px 10px rgba(99,0,0,0.4); border: 2px solid var(--gold-primary);}
 
-        /* ====== CARRUSEL Y LIGHTBOX ====== */
-        .carousel-wrapper { width: 100%; position: relative; margin: 25px 0; overflow: hidden; }
-        .carousel { display: flex; overflow-x: auto; gap: 15px; scroll-snap-type: x mandatory; padding-bottom: 15px; scrollbar-width: thin; scrollbar-color: var(--gold-primary) transparent; }
-        .carousel::-webkit-scrollbar { height: 6px; }
-        .carousel::-webkit-scrollbar-thumb { background-color: var(--gold-primary); border-radius: 10px; }
-        .carousel img { width: 80%; flex-shrink: 0; scroll-snap-align: center; border-radius: 8px; border: 1px solid var(--gold-primary); box-shadow: 0 8px 15px rgba(0,0,0,0.2); object-fit: cover; aspect-ratio: 4/5; cursor: zoom-in; transition: transform 0.3s ease; }
-        .carousel img:hover { transform: scale(1.02); }
+        /* ====== CARRUSEL EDITORIAL ====== */
+        .carousel-wrapper { width: 100%; position: relative; margin: 30px 0; overflow: hidden; padding: 10px 0; }
+        .carousel { display: flex; overflow-x: auto; gap: 20px; scroll-snap-type: x mandatory; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--maroon) transparent; }
+        .carousel::-webkit-scrollbar { height: 4px; }
+        .carousel::-webkit-scrollbar-thumb { background-color: var(--maroon); border-radius: 4px; }
+        .carousel img { width: 75%; flex-shrink: 0; scroll-snap-align: center; border: 1px solid var(--gold-primary); box-shadow: 10px 15px 25px rgba(0,0,0,0.15); object-fit: cover; aspect-ratio: 4/5; cursor: zoom-in; transition: transform 0.4s ease; padding: 5px; background: #fff;}
+        .carousel img:hover { transform: scale(1.03) rotate(-1deg); }
         
-        .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(27, 23, 23, 0.95); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; backdrop-filter: blur(10px); }
+        .lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(27, 23, 23, 0.95); z-index: 10000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; backdrop-filter: blur(8px); }
         .lightbox.active { opacity: 1; visibility: visible; }
-        .lightbox img { max-width: 90%; max-height: 80vh; border: 2px solid var(--gold-primary); border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
-        .lightbox-close { position: absolute; top: 25px; right: 30px; color: var(--gold-primary); font-size: 45px; cursor: pointer; transition: transform 0.3s; }
-        .lightbox-close:hover { transform: scale(1.1); color: var(--gold-light); }
+        .lightbox img { max-width: 90%; max-height: 85vh; border: 4px solid var(--cotton); box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: var(--cotton); font-size: 50px; cursor: pointer; transition: transform 0.3s; font-family: sans-serif; font-weight: 300; }
+        .lightbox-close:hover { transform: scale(1.2); color: var(--gold-primary); }
 
         /* ====== BOTONES ====== */
         .btn-confirmar {
             display:inline-flex; align-items:center; justify-content:center; gap:12px; width:100%;
-            padding:18px 24px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color:#EDEBDD; border: 1px solid var(--primary-light); font-family:'Cinzel',serif; font-size:11px; letter-spacing:4px;
-            text-transform:uppercase; cursor:pointer; font-weight:600; border-radius:6px;
-            box-shadow: 0 8px 20px rgba(27,23,23,0.4); transition:all 0.4s ease;
-            position:relative; overflow:hidden; margin-top: 15px; text-decoration: none;
+            padding:20px 24px; background: var(--maroon);
+            color:var(--cotton); border: 1px solid var(--cherry-red); font-family:'Cinzel',serif; font-size:12px; letter-spacing:5px;
+            text-transform:uppercase; cursor:pointer; font-weight:700;
+            box-shadow: 0 10px 25px rgba(99,0,0,0.25); transition:all 0.4s ease;
+            position:relative; overflow:hidden; margin-top: 20px; text-decoration: none;
         }
-        .btn-confirmar::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent); transition:left 0.6s ease; }
+        .btn-confirmar::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent); transition:left 0.7s ease; }
         .btn-confirmar:hover::before { left:100%; }
-        .btn-confirmar:hover { box-shadow: 0 12px 25px rgba(27,23,23,0.6); transform:translateY(-3px); }
-        .btn-confirmar svg { width:20px; height:20px; fill:#EDEBDD; flex-shrink:0; }
+        .btn-confirmar:hover { box-shadow: 0 15px 30px rgba(99,0,0,0.35); transform:translateY(-3px); background: var(--cherry-red); }
+        .btn-confirmar svg { width:22px; height:22px; fill:var(--cotton); flex-shrink:0; }
         
         .btn-outline {
-            background: transparent; border: 1px solid var(--primary); color: var(--primary);
-            box-shadow: none; padding: 15px; margin-top: 10px;
+            background: transparent; border: 1px solid var(--maroon); color: var(--maroon);
+            box-shadow: none; padding: 18px; margin-top: 15px;
         }
-        .btn-outline:hover { background: rgba(129,1,0,0.05); color: var(--primary-dark); }
-        .btn-outline svg { fill: var(--primary); }
+        .btn-outline:hover { background: var(--red-glass); color: var(--cherry-red); }
+        .btn-outline svg { fill: var(--maroon); }
 
         /* ====== UBICACIONES ====== */
-        .ubicacion-bloque { margin-bottom: 25px; text-align: center; }
-        .ubicacion-direccion { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:500; color:var(--text-muted); line-height:1.6; margin: 10px 0 18px 0; }
-        .map-wrapper { width:100%; height:320px; border-radius:10px; overflow:hidden; border:2px solid rgba(212,175,55,0.4); box-shadow: 0 12px 30px rgba(0,0,0,0.15); position: relative;}
-        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: contrast(1.1); }
+        .ubicacion-bloque { margin-bottom: 30px; text-align: center; }
+        .ubicacion-direccion { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:500; color:var(--text-muted); line-height:1.6; margin: 10px 0 20px 0; }
+        .map-wrapper { width:100%; height:320px; overflow:hidden; border:1px solid var(--gold-primary); box-shadow: 0 15px 35px rgba(99,0,0,0.15); position: relative; padding: 5px; background: #fff;}
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: contrast(1.1) grayscale(0.2); transition: filter 0.5s;}
+        .map-wrapper:hover iframe { filter: contrast(1.1) grayscale(0); }
 
         /* ====== ITINERARIO ====== */
-        .itinerario-timeline { margin-top:30px; position:relative; padding:0; }
+        .itinerario-timeline { margin-top:40px; position:relative; padding:0; }
         .itinerario-timeline::before {
-            content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
-            background:linear-gradient(to bottom, transparent, var(--gold-primary) 10%, var(--gold-primary) 90%, transparent);
-            transform:translateX(-50%); opacity: 0.5;
+            content:''; position:absolute; left:50%; top:0; bottom:0; width:1px;
+            background: var(--maroon); opacity: 0.3;
+            transform:translateX(-50%);
         }
-        .itin-row { display:flex; align-items:center; justify-content:center; position:relative; margin-bottom:25px; }
-        .itin-hora { width:calc(50% - 26px); text-align:right; padding-right:20px; font-family:'Cinzel',serif; font-size:13px; font-weight:700; letter-spacing:2px; color:var(--primary); line-height:1.2; flex-shrink:0; }
-        .itin-node { width:30px; height:30px; flex-shrink:0; position:relative; z-index:2; display:flex; align-items:center; justify-content:center; background: var(--bg-glass); border-radius: 50%; border: 1px solid var(--gold-primary); box-shadow: 0 0 15px rgba(212,175,55,0.4);}
-        .itin-node::before { content:'♥'; font-size:16px; color:var(--primary); line-height:1; }
-        .itin-evento { width:calc(50% - 26px); padding-left:20px; flex-shrink:0; }
-        .itin-evento-nombre { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:26px; font-weight:600; color:var(--text-main); line-height:1.1; text-align:left; }
+        .itin-row { display:flex; align-items:center; justify-content:center; position:relative; margin-bottom:35px; }
+        .itin-hora { width:calc(50% - 26px); text-align:right; padding-right:25px; font-family:'Cinzel',serif; font-size:14px; font-weight:700; letter-spacing:3px; color:var(--cherry-red); line-height:1.2; flex-shrink:0; }
+        .itin-node { width:12px; height:12px; flex-shrink:0; position:relative; z-index:2; background: var(--gold-primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--cotton), 0 0 0 5px var(--maroon);}
+        .itin-evento { width:calc(50% - 26px); padding-left:25px; flex-shrink:0; }
+        .itin-evento-nombre { font-family:'Bodoni Moda',serif; font-style:italic; font-size:26px; font-weight:600; color:var(--noir-black); line-height:1.1; text-align:left; }
 
         /* ====== VESTIMENTA ====== */
-        .vestimenta-icons { display:flex; justify-content:center; gap:35px; margin-top:20px; }
-        .vestimenta-icon-item { display:flex; flex-direction:column; align-items:center; gap:10px; }
-        .vestimenta-icon-item svg { width:36px; height:36px; fill:var(--gold-dark); }
-        .vestimenta-icon-label { font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px; color:var(--text-main); text-transform:uppercase; font-weight:700;}
+        .vestimenta-icons { display:flex; justify-content:center; gap:45px; margin-top:25px; }
+        .vestimenta-icon-item { display:flex; flex-direction:column; align-items:center; gap:12px; }
+        .vestimenta-icon-item svg { width:42px; height:42px; fill:var(--maroon); }
+        .vestimenta-icon-label { font-family:'Cinzel',serif; font-size:13px; letter-spacing:4px; color:var(--noir-black); text-transform:uppercase; font-weight:700;}
 
         /* ====== INPUTS RSVP ====== */
-        .rsvp-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--text-main); line-height:1.6; margin-bottom:25px; font-weight: 500; }
-        .rsvp-input-label { font-family:'Cinzel',serif; font-size:11px; letter-spacing:4px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:10px; color: var(--gold-dark); }
-        .rsvp-input { width:100%; padding:18px 16px; font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--text-main); background:rgba(237,235,221,0.95); border:1px solid rgba(212,175,55,0.5); border-radius:6px; outline:none; transition:all 0.3s; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
-        .rsvp-input:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glass); }
-        .rsvp-input::placeholder { font-style:italic; color:rgba(58,50,50,0.5); }
-        .rsvp-input-wrap { margin-bottom:22px; }
+        .rsvp-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:24px; color:var(--noir-black); line-height:1.5; margin-bottom:30px; font-weight: 500; }
+        .rsvp-input-label { font-family:'Cinzel',serif; font-size:12px; letter-spacing:5px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:12px; color: var(--gold-dark); }
+        .rsvp-input { width:100%; padding:20px 18px; font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:var(--noir-black); background:var(--white-glass); border:1px solid rgba(129,1,0,0.3); outline:none; transition:all 0.3s; }
+        .rsvp-input:focus { border-color:var(--cherry-red); box-shadow:0 0 0 4px var(--red-glass); background: #fff;}
+        .rsvp-input::placeholder { font-style:italic; color:rgba(27,23,23,0.4); }
+        .rsvp-input-wrap { margin-bottom:25px; }
 
         /* ====== MISC ====== */
         #glitter-canvas { position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999; }
         #lanterns-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden; }
 
-        #music-control-btn { position:fixed;bottom:25px;right:25px;width:55px;height:55px;border-radius:50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border:2px solid var(--gold-primary); color:#EDEBDD; display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999; box-shadow:0 8px 25px rgba(27,23,23,0.6); opacity:0;visibility:hidden; transition:all 0.5s; }
-        #music-control-btn:hover { transform:scale(1.1) rotate(5deg); }
+        #music-control-btn { position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%; background: var(--maroon); border:2px solid var(--gold-primary); color:var(--cotton); display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999; box-shadow:0 10px 30px rgba(99,0,0,0.4); opacity:0;visibility:hidden; transition:all 0.5s; }
+        #music-control-btn:hover { transform:scale(1.1) rotate(5deg); background: var(--cherry-red);}
         #music-control-btn.visible { opacity:1;visibility:visible; }
-        #music-control-btn svg { width:24px;height:24px;fill:#EDEBDD; }
+        #music-control-btn svg { width:26px;height:26px;fill:var(--cotton); }
         
         .flower-petal { position:absolute; border-radius:150% 0 150% 0; pointer-events:none; animation:float-up infinite ease-in; opacity:0; }
         
@@ -374,15 +353,15 @@
             100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
         }
 
-        .lotus-header svg { width:60px;height:60px;fill:var(--gold-primary); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
-        .invitation-footer { font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;color:var(--gold-dark);margin-top:30px;font-weight:700;text-transform:uppercase; text-shadow: 0 1px 1px #fff; }
+        .invitation-footer { font-family:'Cinzel',serif;font-size:12px;letter-spacing:6px;color:var(--maroon);margin-top:40px;font-weight:700;text-transform:uppercase; text-shadow: 0 1px 1px #fff; border-top: 1px solid rgba(129,1,0,0.2); padding-top: 20px;}
 
         @media(max-width:420px){
-            .main-title{font-size:85px}
-            .invitation-frame{padding:45px 15px;}
-            .bloque-vidrio, .bloque-vidrio-alt{margin:0 -5px; padding: 35px 20px;}
-            .bloque-bugambilia {margin: 0 -10px; padding: 40px 20px;}
-            .countdown-number { font-size: 24px; }
+            .main-title{font-size:95px}
+            .invitation-frame{padding:50px 15px;}
+            .bloque-claro{margin:0 -5px; padding: 40px 20px;}
+            .bloque-bugambilia {margin: 0 -15px; padding: 45px 20px;}
+            .countdown-number { font-size: 26px; }
+            .carousel img { width: 85%; }
         }
     </style>
 </head>
@@ -399,21 +378,6 @@
     <div id="envelope-screen">
         <div id="glitter-rain-container"></div>
 
-        <div id="env-stars"></div>
-        
-        <div class="env-sparkle" style="--sd:2.2s;--sdelay:0s;top:15%;left:25%;">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L13.4 10.6L22 12L13.4 13.4L12 22L10.6 13.4L2 12L10.6 10.6Z" fill="#d4af37"/></svg>
-        </div>
-        <div class="env-sparkle" style="--sd:3s;--sdelay:0.8s;top:20%;right:20%;">
-            <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2L13.4 10.6L22 12L13.4 13.4L12 22L10.6 13.4L2 12L10.6 10.6Z" fill="#d4af37"/></svg>
-        </div>
-        <div class="env-sparkle" style="--sd:2.6s;--sdelay:1.4s;bottom:25%;left:20%;">
-            <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2L13.4 10.6L22 12L13.4 13.4L12 22L10.6 13.4L2 12L10.6 10.6Z" fill="#f9e596"/></svg>
-        </div>
-        <div class="env-sparkle" style="--sd:2s;--sdelay:0.4s;bottom:20%;right:25%;">
-            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2L13.4 10.6L22 12L13.4 13.4L12 22L10.6 13.4L2 12L10.6 10.6Z" fill="#d4af37"/></svg>
-        </div>
-
         <div class="envelope-wrapper" id="envelopeWrapperNew" onclick="openEnvelope(event)">
             <div class="letter-peek">
                 <div class="letter-peek-inner">
@@ -423,59 +387,59 @@
             </div>
 
             <div class="envelope-body">
-                <svg class="env-svg-main" viewBox="0 0 310 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="env-svg-main" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <linearGradient id="goldGrad2" x1="0" y1="0" x2="310" y2="210" gradientUnits="userSpaceOnUse">
+                        <linearGradient id="goldGrad2" x1="0" y1="0" x2="320" y2="220" gradientUnits="userSpaceOnUse">
                             <stop offset="0%" stop-color="#f9e596"/>
                             <stop offset="30%" stop-color="#d4af37"/>
                             <stop offset="60%" stop-color="#f9e596"/>
                             <stop offset="100%" stop-color="#9e7f1e"/>
                         </linearGradient>
-                        <linearGradient id="envBase2" x1="0" y1="0" x2="0" y2="210" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#2a0000"/>
+                        <linearGradient id="envBase2" x1="0" y1="0" x2="0" y2="220" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#4a0000"/>
                             <stop offset="100%" stop-color="#1B1717"/>
                         </linearGradient>
-                        <linearGradient id="envLeft2" x1="0" y1="0" x2="155" y2="105" gradientUnits="userSpaceOnUse">
+                        <linearGradient id="envLeft2" x1="0" y1="0" x2="160" y2="110" gradientUnits="userSpaceOnUse">
                             <stop offset="0%" stop-color="#9e1413"/>
                             <stop offset="100%" stop-color="#630000"/>
                         </linearGradient>
-                        <linearGradient id="envRight2" x1="310" y1="0" x2="155" y2="105" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#810100"/>
-                            <stop offset="100%" stop-color="#4a0000"/>
-                        </linearGradient>
-                        <linearGradient id="envBottom2" x1="155" y1="210" x2="155" y2="130" gradientUnits="userSpaceOnUse">
+                        <linearGradient id="envRight2" x1="320" y1="0" x2="160" y2="110" gradientUnits="userSpaceOnUse">
                             <stop offset="0%" stop-color="#810100"/>
                             <stop offset="100%" stop-color="#3b0000"/>
                         </linearGradient>
-                        <linearGradient id="flapGrad2" x1="0" y1="0" x2="310" y2="140" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#9e1413"/>
+                        <linearGradient id="envBottom2" x1="160" y1="220" x2="160" y2="135" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#810100"/>
+                            <stop offset="100%" stop-color="#2a0000"/>
+                        </linearGradient>
+                        <linearGradient id="flapGrad2" x1="0" y1="0" x2="320" y2="145" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#ab0d0c"/>
                             <stop offset="100%" stop-color="#630000"/>
                         </linearGradient>
                     </defs>
-                    <rect width="310" height="210" rx="5" fill="url(#envBase2)"/>
-                    <rect x="0.4" y="0.4" width="309.2" height="209.2" rx="4.6" stroke="url(#goldGrad2)" stroke-width="1.5" fill="none" opacity="0.8"/>
-                    <polygon points="0,0 155,105 0,210" fill="url(#envLeft2)" opacity="0.95"/>
-                    <polygon points="310,0 155,105 310,210" fill="url(#envRight2)" opacity="0.95"/>
-                    <polygon points="0,210 155,105 310,210" fill="url(#envBottom2)" opacity="0.95"/>
+                    <rect width="320" height="220" rx="3" fill="url(#envBase2)"/>
+                    <rect x="0.4" y="0.4" width="319.2" height="219.2" rx="2.6" stroke="url(#goldGrad2)" stroke-width="1" fill="none" opacity="0.6"/>
+                    <polygon points="0,0 160,110 0,220" fill="url(#envLeft2)" opacity="0.98"/>
+                    <polygon points="320,0 160,110 320,220" fill="url(#envRight2)" opacity="0.98"/>
+                    <polygon points="0,220 160,110 320,220" fill="url(#envBottom2)" opacity="0.98"/>
                     
-                    <line x1="0" y1="0" x2="155" y2="105" stroke="url(#goldGrad2)" stroke-width="1" opacity="0.5"/>
-                    <line x1="310" y1="0" x2="155" y2="105" stroke="url(#goldGrad2)" stroke-width="1" opacity="0.5"/>
-                    <line x1="0" y1="210" x2="155" y2="105" stroke="url(#goldGrad2)" stroke-width="1" opacity="0.4"/>
-                    <line x1="310" y1="210" x2="155" y2="105" stroke="url(#goldGrad2)" stroke-width="1" opacity="0.4"/>
+                    <line x1="0" y1="0" x2="160" y2="110" stroke="url(#goldGrad2)" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="320" y1="0" x2="160" y2="110" stroke="url(#goldGrad2)" stroke-width="1.5" opacity="0.7"/>
+                    <line x1="0" y1="220" x2="160" y2="110" stroke="url(#goldGrad2)" stroke-width="1.5" opacity="0.5"/>
+                    <line x1="320" y1="220" x2="160" y2="110" stroke="url(#goldGrad2)" stroke-width="1.5" opacity="0.5"/>
                     
                     <g class="env-flap-group" id="envFlapMain">
-                        <polygon points="0,0 155,125 310,0" fill="url(#flapGrad2)"/>
-                        <polyline points="0,0 155,125 310,0" stroke="url(#goldGrad2)" stroke-width="1.5" fill="none" opacity="0.8"/>
-                        <g transform="translate(155,52)" opacity="0.9">
-                            <circle cx="0" cy="0" r="8" fill="none" stroke="#d4af37" stroke-width="1"/>
-                            <path d="M0,-12 C4,-6 12,-4 12,0 C12,4 4,6 0,12 C-4,6 -12,4 -12,0 C-12,-4 -4,-6 0,-12Z" fill="none" stroke="#d4af37" stroke-width="1"/>
-                            <circle cx="0" cy="0" r="3" fill="#d4af37"/>
+                        <polygon points="0,0 160,130 320,0" fill="url(#flapGrad2)"/>
+                        <polyline points="0,0 160,130 320,0" stroke="url(#goldGrad2)" stroke-width="2" fill="none" opacity="0.9"/>
+                        <g transform="translate(160,55)" opacity="0.95">
+                            <circle cx="0" cy="0" r="10" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                            <path d="M0,-14 C5,-7 14,-5 14,0 C14,5 5,7 0,14 C-5,7 -14,5 -14,0 C-14,-5 -5,-7 0,-14Z" fill="none" stroke="#d4af37" stroke-width="1"/>
+                            <circle cx="0" cy="0" r="3.5" fill="#d4af37"/>
                         </g>
                     </g>
                 </svg>
 
                 <div class="env-name-label">Paula</div>
-                <div class="env-date-label">Mis XVI Años  ·  2026</div>
+                <div class="env-date-label">Mis XV Años  ·  2026</div>
 
                 <div class="wax-seal">
                     <svg viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -508,23 +472,14 @@
     <main id="main-invitation">
         <div class="invitation-frame" style="z-index:2;">
             
-            <div class="frame-sparkle" style="top:-15px;left:-15px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2 L13.2 10.8 L22 12 L13.2 13.2 L12 22 L10.8 13.2 L2 12 L10.8 10.8 Z" fill="#d4af37" opacity="0.9"/></svg></div>
-            <div class="frame-sparkle" style="top:-15px;right:-15px; animation-delay:0.5s;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 L13.2 10.8 L22 12 L13.2 13.2 L12 22 L10.8 13.2 L2 12 L10.8 10.8 Z" fill="#d4af37" opacity="0.9"/></svg></div>
-            <div class="frame-sparkle" style="bottom:-15px;left:-15px; animation-delay:1s;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 L13.2 10.8 L22 12 L13.2 13.2 L12 22 L10.8 13.2 L2 12 L10.8 10.8 Z" fill="#d4af37" opacity="0.9"/></svg></div>
-            <div class="frame-sparkle" style="bottom:-15px;right:-15px; animation-delay:1.5s;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 L13.2 10.8 L22 12 L13.2 13.2 L12 22 L10.8 13.2 L2 12 L10.8 10.8 Z" fill="#d4af37" opacity="0.9"/></svg></div>
-
-            <div class="lotus-header reveal">
-                <svg viewBox="0 0 24 24"><path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5M19 19C19 19.55 18.55 20 18 20H6C5.45 20 5 19.55 5 19V18H19V19Z"/></svg>
-            </div>
-
             <div class="hero-photo-wrap reveal delay-1">
                 <img src="assets/hero.jpg" alt="Paula" class="hero-photo">
             </div>
 
-            <div class="section-tag reveal delay-2">Mis XVI Años</div>
+            <div class="section-tag reveal delay-2">Mis XV Años</div>
             <h1 class="main-title reveal delay-3">Paula</h1>
 
-            <div class="hashtag-text reveal">#MisXVIPaula</div>
+            <div class="hashtag-text reveal">#MisXVPaula</div>
 
             <p class="phrase reveal">"Para nosotros es un placer el que nos acompañen a hacerle su sueño realidad a nuestra hija esperando se diviertan y lo disfruten, hecho con mucho amor para ella."</p>
             
@@ -554,25 +509,27 @@
 
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
-            <div class="bloque-vidrio reveal">
+            <div class="bloque-claro reveal">
                 <div class="section-heading">Fecha</div>
-                <div style="font-family:'Cinzel',serif;font-size:36px;font-weight:600;color:var(--primary-dark);letter-spacing:4px;">22 · AGO · 2026</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--text-muted);margin-top:5px; font-weight:600;">Sábado</div>
+                <div style="font-family:'Bodoni Moda',serif;font-size:42px;font-weight:700;color:var(--maroon);letter-spacing:4px; line-height:1;">22 · AGO · 2026</div>
+                <div style="font-family:'Cinzel',serif;font-size:18px;color:var(--cherry-red);margin-top:10px; font-weight:700; letter-spacing: 2px;">SÁBADO</div>
                 
                 <div class="calendar-widget reveal delay-1">
-                    <div class="calendar-header">2026 <div class="calendar-month">Agosto</div></div>
-                    <div class="calendar-body">
-                        <div class="calendar-days-header">
-                            <span class="calendar-day-name">Do</span><span class="calendar-day-name">Lu</span><span class="calendar-day-name">Ma</span><span class="calendar-day-name">Mi</span><span class="calendar-day-name">Ju</span><span class="calendar-day-name">Vi</span><span class="calendar-day-name">Sá</span>
-                        </div>
-                        <div class="calendar-grid">
-                            <span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span>
-                            <span class="cal-day">1</span>
-                            <span class="cal-day">2</span><span class="cal-day">3</span><span class="cal-day">4</span><span class="cal-day">5</span><span class="cal-day">6</span><span class="cal-day">7</span><span class="cal-day">8</span>
-                            <span class="cal-day">9</span><span class="cal-day">10</span><span class="cal-day">11</span><span class="cal-day">12</span><span class="cal-day">13</span><span class="cal-day">14</span><span class="cal-day">15</span>
-                            <span class="cal-day">16</span><span class="cal-day">17</span><span class="cal-day">18</span><span class="cal-day">19</span><span class="cal-day">20</span><span class="cal-day">21</span><span class="cal-day highlight">22</span>
-                            <span class="cal-day">23</span><span class="cal-day">24</span><span class="cal-day">25</span><span class="cal-day">26</span><span class="cal-day">27</span><span class="cal-day">28</span><span class="cal-day">29</span>
-                            <span class="cal-day">30</span><span class="cal-day">31</span>
+                    <div class="calendar-inner">
+                        <div class="calendar-header">2026 <div class="calendar-month">Agosto</div></div>
+                        <div class="calendar-body">
+                            <div class="calendar-days-header">
+                                <span class="calendar-day-name">Do</span><span class="calendar-day-name">Lu</span><span class="calendar-day-name">Ma</span><span class="calendar-day-name">Mi</span><span class="calendar-day-name">Ju</span><span class="calendar-day-name">Vi</span><span class="calendar-day-name">Sá</span>
+                            </div>
+                            <div class="calendar-grid">
+                                <span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span><span class="cal-day empty"></span>
+                                <span class="cal-day">1</span>
+                                <span class="cal-day">2</span><span class="cal-day">3</span><span class="cal-day">4</span><span class="cal-day">5</span><span class="cal-day">6</span><span class="cal-day">7</span><span class="cal-day">8</span>
+                                <span class="cal-day">9</span><span class="cal-day">10</span><span class="cal-day">11</span><span class="cal-day">12</span><span class="cal-day">13</span><span class="cal-day">14</span><span class="cal-day">15</span>
+                                <span class="cal-day">16</span><span class="cal-day">17</span><span class="cal-day">18</span><span class="cal-day">19</span><span class="cal-day">20</span><span class="cal-day">21</span><span class="cal-day highlight">22</span>
+                                <span class="cal-day">23</span><span class="cal-day">24</span><span class="cal-day">25</span><span class="cal-day">26</span><span class="cal-day">27</span><span class="cal-day">28</span><span class="cal-day">29</span>
+                                <span class="cal-day">30</span><span class="cal-day">31</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -584,25 +541,28 @@
 
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
-            <div class="bloque-bugambilia">
+            <div class="bloque-claro" style="padding-bottom: 20px;">
                 <div class="section-heading reveal">Ubicación</div>
                 
                 <div class="ubicacion-bloque reveal-scale" style="margin-bottom:0;">
                     <div class="info-label">Recepción • 6:30 P.M.</div>
-                    <div class="family-names">Jardín de eventos San Isidro</div>
+                    <div class="family-names">Jardín de Eventos San Isidro</div>
                     <div class="ubicacion-direccion">Prolongación Santos Degollado 77<br>La Paz, 56525, EdoMex</div>
                     <div class="map-wrapper reveal delay-1">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.897141218812!2d-98.9492099245189!3d19.373605942561806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e3cf1173b1cb%3A0xb26d111e31819d1d!2sJard%C3%ADn%20de%20eventos%20San%20Isidro!5e0!3m2!1ses-419!2smx!4v1785607680810!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/g3a2FSUZuxEkwsrU9" target="_blank" style="text-decoration:none;">
-                        <button class="btn-confirmar btn-outline reveal delay-2">Ver ruta en Maps</button>
+                        <button class="btn-confirmar reveal delay-2">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Ver ruta en Maps
+                        </button>
                     </a>
                 </div>
             </div>
 
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
-            <div class="bloque-vidrio-alt reveal">
+            <div class="bloque-claro reveal">
                 <div class="section-heading">Itinerario</div>
                 <div class="itinerario-timeline">
                     <div class="itin-row reveal">
@@ -635,10 +595,10 @@
 
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
-            <div class="bloque-vidrio-alt reveal">
+            <div class="bloque-claro reveal">
                 <div class="section-heading">Vestimenta</div>
-                <div style="font-family:'Cinzel',serif;font-size:26px;font-weight:700;letter-spacing:8px;color:var(--text-main);margin-top:2px;">Formal</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--primary);margin-top:10px;line-height:1.6; font-weight:600;">Sugerimos evitar los colores negro y rojo, están reservados para la quinceañera.</div>
+                <div style="font-family:'Bodoni Moda',serif;font-size:32px;font-weight:700;letter-spacing:6px;color:var(--maroon);margin-top:2px;">FORMAL</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--cherry-red);margin-top:15px;line-height:1.4; font-weight:600;">Sugerimos evitar los colores negro y rojo, están reservados para la quinceañera.</div>
                 <div class="vestimenta-icons reveal delay-1">
                     <div class="vestimenta-icon-item">
                         <svg viewBox="0 0 24 24"><path d="M16 2l-1 3H9L8 2H4l2 5v13h12V7l2-5h-4M9.5 10a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 9.5 13 1.5 1.5 0 0 1 8 11.5 1.5 1.5 0 0 1 9.5 10m5 0a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 14.5 13 1.5 1.5 0 0 1 13 11.5 1.5 1.5 0 0 1 14.5 10Z"/></svg>
@@ -654,9 +614,9 @@
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
             <div class="section-heading reveal">Galería de Fotos</div>
-            <p class="rsvp-intro reveal delay-1" style="font-size:18px;">Desliza para ver más momentos especiales.</p>
+            <p class="rsvp-intro reveal delay-1" style="font-size:20px; font-weight: 600; color: var(--cherry-red);">Desliza para ver más momentos especiales.</p>
             
-            <!-- Carrusel de Imágenes -->
+            <!-- Carrusel Editorial de Imágenes -->
             <div class="carousel-wrapper reveal delay-2">
                 <div class="carousel">
                     <img src="assets/foto1.jpg" alt="Foto 1" onclick="openLightbox(this.src)">
@@ -683,11 +643,11 @@
                 <div class="section-heading">Nuestra Playlist</div>
                 <p class="rsvp-intro">¡Ayúdame a armar el soundtrack de esta noche! Agrega tus canciones favoritas para que no falten en la pista.</p>
                 
-                <div class="reveal delay-1" style="border-radius: 12px; overflow: hidden; margin-bottom: 25px; border: 1px solid rgba(212,175,55,0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+                <div class="reveal delay-1" style="border-radius: 12px; overflow: hidden; margin-bottom: 30px; border: 1px solid rgba(212,175,55,0.6); box-shadow: 0 15px 30px rgba(0,0,0,0.4);">
                     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/730sbloMbFisXUcjR8qoiw?utm_source=generator&si=a145c738b79c478c" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 <a href="https://open.spotify.com/playlist/730sbloMbFisXUcjR8qoiw?si=ff53598183e34cc0&pt=8cc9752859652ecbe31c04514245d7c9" target="_blank" style="text-decoration: none;">
-                    <button class="btn-confirmar reveal delay-2" style="background: linear-gradient(135deg, #1DB954, #158a3d); color: #fff; border:none;">
+                    <button class="btn-confirmar reveal delay-2" style="background: #1DB954; color: #fff; border:none; box-shadow: 0 10px 20px rgba(29, 185, 84, 0.3);">
                         <svg viewBox="0 0 24 24" style="fill:#fff;"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.24 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15.06 10.56 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.239.54-.959.72-1.56.3z"/></svg>
                         Agregar Canción
                     </button>
@@ -696,7 +656,7 @@
 
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
-            <div class="bloque-vidrio-alt reveal">
+            <div class="bloque-claro reveal">
                 <div class="section-heading">Cámara en Vivo</div>
                 <p class="rsvp-intro" style="margin-bottom: 25px;">Ayúdanos a capturar los mejores momentos. Sube tus fotos y videos a nuestra carpeta compartida durante el evento.</p>
 
@@ -710,7 +670,7 @@
 
             <div class="divider-ornate reveal"><div class="divider-ornate-diamond"></div></div>
 
-            <div class="bloque-bugambilia reveal">
+            <div class="bloque-claro reveal">
                 <div class="section-heading">Confirmación</div>
                 <p class="rsvp-intro">Será un honor contar con tu presencia en esta noche tan especial. Por favor confirma tu asistencia.</p>
                 <div class="rsvp-input-wrap reveal delay-1">
@@ -722,7 +682,7 @@
                     Confirmar por WhatsApp
                 </button>
                 
-                <div style="margin: 40px 0; border-top: 1px dashed rgba(212,175,55,0.4);"></div>
+                <div style="margin: 45px 0; border-top: 1px dashed rgba(129,1,0,0.3);"></div>
 
                 <div class="section-heading reveal">Buenos Deseos</div>
                 <p class="rsvp-intro reveal delay-1">Deja un mensaje para Paula. Tu mensaje se guardará con cariño en esta nueva etapa.</p>
@@ -761,7 +721,7 @@
 
         function makeParticle(x, y, type) {
             let vx, vy, life, size, decay, color;
-            const colors = ['129,1,0', '171,13,12', '237,235,221', '212,175,55'];
+            const colors = ['129,1,0', '171,13,12', '99,0,0', '212,175,55'];
             color = colors[Math.floor(Math.random() * colors.length)];
             
             if (type === 'explosion') {
@@ -983,14 +943,14 @@
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
-            setTimeout(() => { document.getElementById('lightbox-img').src = ""; }, 300);
+            setTimeout(() => { document.getElementById('lightbox-img').src = ""; }, 400);
         }
 
         /* ===== WHATSAPP ===== */
         function sendConfirmationViaWhatsApp(){
             const inp=document.getElementById('guest-name');
             if(!inp||!inp.value.trim()){alert('Por favor ingresa tu nombre completo.');inp.focus();return;}
-            const msg=`¡Hola! Confirmo mi asistencia a los XVI Años de Paula.\n\n• Nombre: ${inp.value.trim()}`;
+            const msg=`¡Hola! Confirmo mi asistencia a los XV Años de Paula.\n\n• Nombre: ${inp.value.trim()}`;
             window.open(`https://wa.me/525564114703?text=${encodeURIComponent(msg)}`,'_blank');
         }
 
@@ -1005,10 +965,10 @@
 
         /* ===== ADD TO CALENDAR ===== */
         function addToCalendar(){
-            const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//XVI Años Paula//ES','BEGIN:VEVENT','DTSTART:20260822T183000','DTEND:20260822T235900','SUMMARY:XVI Años de Paula','DESCRIPTION:Recepción 6:30PM en Jardín de eventos San Isidro','LOCATION:Prolongación Santos Degollado 77, La Paz, EdoMex','STATUS:CONFIRMED','END:VEVENT','END:VCALENDAR'].join('\r\n');
+            const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//XV Años Paula//ES','BEGIN:VEVENT','DTSTART:20260822T183000','DTEND:20260822T235900','SUMMARY:XV Años de Paula','DESCRIPTION:Recepción 6:30PM en Jardín de Eventos San Isidro','LOCATION:Prolongación Santos Degollado 77, La Paz, EdoMex','STATUS:CONFIRMED','END:VEVENT','END:VCALENDAR'].join('\r\n');
             const a=document.createElement('a');
             a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar;charset=utf-8'}));
-            a.download='XVI-Anios-Paula.ics';
+            a.download='XV-Anios-Paula.ics';
             document.body.appendChild(a);a.click();document.body.removeChild(a);
         }
 
@@ -1016,7 +976,7 @@
         const target=new Date("August 22, 2026 00:00:00").getTime();
         setInterval(()=>{
             const left=target-Date.now();
-            if(left<0){document.getElementById("countdown-timer").innerHTML="<div style='font-family:\"Cinzel\",serif;color:#EDEBDD;letter-spacing:2px;font-size:18px;font-weight:700;'>¡Llegó el Gran Día!</div>";return;}
+            if(left<0){document.getElementById("countdown-timer").innerHTML="<div style='font-family:\"Bodoni Moda\",serif;color:var(--maroon);letter-spacing:2px;font-size:24px;font-weight:700;'>¡Llegó el Gran Día!</div>";return;}
             const d=Math.floor(left/86400000),h=Math.floor(left%86400000/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);
             document.getElementById("days").innerText=d<10?"0"+d:d;
             document.getElementById("hours").innerText=h<10?"0"+h:h;
