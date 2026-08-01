@@ -36,7 +36,7 @@
         body.content-active {
             overflow-y: auto; 
             overflow-x: hidden;
-            background-color: var(--cotton);
+            background-color: var(--noir-black); /* Fondo general negro */
         }
 
         /* ====== ANIMACIONES REVEAL ====== */
@@ -57,16 +57,16 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('assets/fondosobre.jpg') no-repeat center center;
             background-size: cover;
-            background-color: var(--noir-black); /* Fallback */
+            background-color: var(--noir-black);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 1000;
             transition: opacity 1.2s ease-in-out, visibility 1.2s;
         }
         
-        /* Capa oscura semitransparente por si la imagen de fondo es muy clara */
+        /* Capa oscura semitransparente para el sobre */
         #envelope-screen::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(27, 23, 23, 0.5); z-index: 1;
+            background: rgba(27, 23, 23, 0.75); z-index: 1;
         }
         
         #envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -85,22 +85,22 @@
         .envelope-wrapper:hover { transform: translateY(-5px) scale(1.02); }
 
         .envelope-body { position: relative; width: 300px; height: 210px; margin: 0 auto; }
-        .env-svg-main { width: 300px; height: 210px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6)); }
+        .env-svg-main { width: 300px; height: 210px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); }
 
-        .env-name-label { position: absolute; top: 70px; left: 0; right: 0; text-align: center; font-family: 'Pinyon Script', cursive; font-size: 50px; color: var(--cotton); text-shadow: 0 2px 10px rgba(0,0,0,0.6); pointer-events: none; z-index: 15; line-height: 1;}
+        .env-name-label { position: absolute; top: 70px; left: 0; right: 0; text-align: center; font-family: 'Pinyon Script', cursive; font-size: 50px; color: var(--cotton); text-shadow: 0 2px 10px rgba(0,0,0,0.8); pointer-events: none; z-index: 15; line-height: 1;}
         .env-date-label { position: absolute; top: 135px; left: 0; right: 0; text-align: center; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 5px; color: var(--gold-light); pointer-events: none; z-index: 15; text-transform: uppercase; }
 
         .env-flap-group { transform-origin: 150px 0px; transform-box: fill-box; transition: transform 0.8s ease 0.1s; }
         .envelope-wrapper.open .env-flap-group { transform: rotateX(-176deg); }
 
-        .letter-peek { position: absolute; left: 50%; transform: translateX(-50%); width: 260px; background: var(--cotton); border-radius: 4px; border: 1px solid var(--gold-primary); z-index: 5; overflow: hidden; top: 20px; height: 0; opacity: 0; transition: height 0.7s ease 0.7s, opacity 0.5s ease 0.7s, top 0.7s ease 0.7s; display: flex; align-items: flex-start; justify-content: center; padding-top: 15px; box-shadow: 0 -5px 20px rgba(0,0,0,0.4); }
+        .letter-peek { position: absolute; left: 50%; transform: translateX(-50%); width: 260px; background: var(--cotton); border-radius: 4px; border: 1px solid var(--gold-primary); z-index: 5; overflow: hidden; top: 20px; height: 0; opacity: 0; transition: height 0.7s ease 0.7s, opacity 0.5s ease 0.7s, top 0.7s ease 0.7s; display: flex; align-items: flex-start; justify-content: center; padding-top: 15px; box-shadow: 0 -5px 20px rgba(0,0,0,0.6); }
         .envelope-wrapper.open .letter-peek { height: 90px; opacity: 1; top: -50px; }
         .letter-peek-inner { text-align: center; opacity: 0; transition: opacity 0.4s ease 1.2s; }
         .envelope-wrapper.open .letter-peek-inner { opacity: 1; }
         .letter-peek-name { font-family: 'Pinyon Script', cursive; font-size: 32px; color: var(--cherry-red); line-height: 1; }
         .letter-peek-date { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--maroon); margin-top: 5px; text-transform: uppercase; font-weight: 700;}
 
-        .wax-seal { position: absolute; top: 140px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; z-index: 20; transition: transform 0.5s ease 0.2s, opacity 0.4s ease 0.15s; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
+        .wax-seal { position: absolute; top: 140px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; z-index: 20; transition: transform 0.5s ease 0.2s, opacity 0.4s ease 0.15s; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8)); }
         .envelope-wrapper.open .wax-seal { transform: translateX(-50%) scale(0); opacity: 0; }
 
         .hint-text { margin-top: 40px; text-align: center; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: var(--gold-light); animation: pulse 2.5s infinite; text-transform: uppercase; z-index: 10; position: relative;}
@@ -109,7 +109,7 @@
         #main-invitation {
             display: flex; flex-direction: column; align-items: center;
             width: 100%;
-            padding: 40px 15px; /* Espaciado lateral para evitar cortes */
+            padding: 40px 15px;
             background: url('assets/imagen.jpg') no-repeat center center fixed;
             background-size: cover;
             position: relative;
@@ -117,7 +117,7 @@
         
         #main-invitation::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(237, 235, 221, 0.95); /* Capa casi sólida de Cotton sobre la imagen de fondo */
+            background: rgba(27, 23, 23, 0.94); /* Fondo oscurecido para integrar el negro */
             z-index: 0;
         }
 
@@ -130,50 +130,50 @@
             z-index: 2;
             display: flex;
             flex-direction: column;
-            gap: 40px; /* Separación consistente entre secciones */
+            gap: 40px;
         }
 
         /* ====== CAJAS Y CONTENEDORES ====== */
         .content-box {
             width: 100%;
-            background: var(--white);
-            border: 1px solid rgba(129, 1, 0, 0.15);
+            background: var(--cotton);
+            border: 1px solid rgba(212, 175, 55, 0.5); /* Borde dorado para contrastar con el negro */
             padding: 40px 25px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         
         .content-box-dark {
             width: 100%;
-            background: var(--maroon);
+            background: var(--noir-black); /* Integración del Noir Black en bloques */
             border: 1px solid var(--gold-primary);
             padding: 45px 25px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(99, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
             color: var(--cotton);
         }
 
         /* ====== FOTO HERO ====== */
-        .hero-section { text-align: center; }
+        .hero-section { text-align: center; padding-top: 15px;}
         .hero-photo-wrap {
             width: 240px; height: 320px; margin: 0 auto 30px auto;
-            border-radius: 120px 120px 0 0; padding: 8px; 
-            background: var(--white);
+            border-radius: 120px 120px 0 0; padding: 6px; 
+            background: var(--maroon); /* Acento rojo oscuro */
             border: 1px solid var(--gold-primary);
-            box-shadow: 0 15px 35px rgba(99, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
-        .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 112px 112px 0 0; filter: contrast(1.05); }
+        .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 114px 114px 0 0; filter: contrast(1.05); }
 
         /* ====== TIPOGRAFÍA EDITORIAL ====== */
-        .hashtag-text { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 22px; color: var(--cherry-red); margin-bottom: 25px; letter-spacing: 1px; }
-        .main-title { font-family:'Pinyon Script',cursive; font-size: 100px; color: var(--cherry-red); margin-bottom: 5px; line-height: 0.9; }
+        .hashtag-text { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 22px; color: var(--gold-primary); margin-bottom: 25px; letter-spacing: 1px; }
+        .main-title { font-family:'Pinyon Script',cursive; font-size: 105px; color: var(--cotton); margin-bottom: 5px; line-height: 0.9; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
         
         .section-heading { font-family: 'Bodoni Moda', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; color: var(--maroon); margin-bottom: 20px; text-transform: uppercase;}
         .content-box-dark .section-heading { color: var(--cotton); border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 15px; display: inline-block;}
         
-        .section-tag { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 4px; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 15px; font-weight: 700; }
+        .section-tag { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 4px; color: var(--gold-light); text-transform: uppercase; margin-bottom: 15px; font-weight: 700; }
         .phrase { font-family:'Cormorant Garamond', serif; font-style:italic; font-size: 22px; color: var(--noir-black); line-height: 1.5; font-weight: 500; }
         
         .info-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--noir-black); text-transform: uppercase; margin-bottom: 5px; font-weight: 700; }
@@ -183,16 +183,16 @@
 
         /* ====== DIVIDER EDITORIAL ====== */
         .divider-ornate { display:flex; align-items:center; justify-content:center; gap: 15px; width: 80%; margin: 0 auto; }
-        .divider-ornate::before, .divider-ornate::after { content:''; flex:1; height:1px; background: var(--maroon); opacity: 0.2; }
+        .divider-ornate::before, .divider-ornate::after { content:''; flex:1; height:1px; background: var(--maroon); opacity: 0.3; }
         .divider-ornate-diamond { width: 8px; height: 8px; background: var(--gold-primary); transform: rotate(45deg); flex-shrink:0; }
 
         /* ====== COUNTDOWN ====== */
         .countdown-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; width: 100%; margin-top: 20px;}
-        .countdown-item { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(212,175,55,0.5); padding: 15px 5px; border-radius: 6px; }
+        .countdown-item { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.3); padding: 15px 5px; border-radius: 6px; }
         .countdown-number { font-family:'Bodoni Moda',serif; font-size: clamp(24px, 6vw, 32px); font-weight: 700; color: var(--cotton); line-height: 1;}
         .countdown-label { font-family:'Cinzel',sans-serif; font-size: 9px; text-transform:uppercase; letter-spacing: 2px; color: var(--gold-light); font-weight: 600; margin-top: 5px; }
 
-        /* ====== CALENDARIO NUEVO Y RESPONSIVO ====== */
+        /* ====== CALENDARIO RESPONSIVO ====== */
         .calendar-widget { background: var(--white); border: 1px solid rgba(129,1,0,0.15); border-radius: 8px; padding: 25px 15px; margin-top: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); width: 100%; }
         .calendar-header { display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid rgba(129,1,0,0.1); padding-bottom: 15px; margin-bottom: 15px; }
         .calendar-month { font-family: 'Bodoni Moda', serif; font-size: 36px; font-style: italic; color: var(--cherry-red); line-height: 1; font-weight: 700;}
@@ -202,7 +202,7 @@
         .calendar-day-name { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
         
         .cal-day { 
-            aspect-ratio: 1; /* Garantiza proporciones cuadradas y evita cortes */
+            aspect-ratio: 1; 
             display: flex; align-items: center; justify-content: center; 
             font-family: 'Cormorant Garamond', serif; font-size: clamp(14px, 4vw, 18px); 
             color: var(--noir-black); font-weight: 600; 
@@ -216,10 +216,9 @@
         .carousel::-webkit-scrollbar { height: 4px; }
         .carousel::-webkit-scrollbar-thumb { background-color: var(--maroon); border-radius: 4px; }
         
-        /* Imágenes contenidas sin desbordar */
         .carousel img { 
-            width: 80%; /* Ocupa el 80% del contenedor padre */
-            flex: 0 0 auto; /* Evita que flexbox aplaste o estire la imagen */
+            width: 80%; 
+            flex: 0 0 auto; 
             scroll-snap-align: center; 
             border: 1px solid var(--gold-primary); 
             border-radius: 4px;
@@ -246,9 +245,9 @@
         .btn-confirmar:hover { background: var(--cherry-red); transform: translateY(-2px); }
         .btn-confirmar svg { width: 18px; height: 18px; fill: var(--cotton); flex-shrink: 0; }
         
-        .content-box-dark .btn-confirmar { background: var(--cotton); color: var(--maroon); }
-        .content-box-dark .btn-confirmar svg { fill: var(--maroon); }
-        .content-box-dark .btn-confirmar:hover { background: var(--white); }
+        .content-box-dark .btn-confirmar { background: var(--maroon); color: var(--cotton); border: 1px solid var(--gold-primary); }
+        .content-box-dark .btn-confirmar svg { fill: var(--cotton); }
+        .content-box-dark .btn-confirmar:hover { background: var(--cherry-red); }
 
         .btn-outline { background: transparent; border: 1px solid var(--maroon); color: var(--maroon); box-shadow: none; }
         .btn-outline:hover { background: rgba(99,0,0,0.05); color: var(--cherry-red); }
@@ -265,27 +264,22 @@
 
         /* ====== ITINERARIO ====== */
         .itinerario-timeline { position:relative; padding: 20px 0; width: 100%; margin: 0 auto;}
-        .itinerario-timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background: var(--maroon); opacity: 0.3; transform:translateX(-50%); }
+        .itinerario-timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background: var(--noir-black); opacity: 0.2; transform:translateX(-50%); }
         
         .itin-row { display:flex; align-items:center; width: 100%; position:relative; margin-bottom: 30px; }
         
         .itin-hora { width: 45%; text-align:right; padding-right:15px; font-family:'Cinzel',serif; font-size:13px; font-weight:700; letter-spacing:2px; color:var(--cherry-red); }
         
         .itin-center { width: 10%; display: flex; justify-content: center; position: relative; z-index: 2; }
-        .itin-node { width: 10px; height: 10px; background: var(--gold-primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--white), 0 0 0 5px var(--maroon); }
+        .itin-node { width: 10px; height: 10px; background: var(--gold-primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--cotton), 0 0 0 5px var(--maroon); }
         
         .itin-evento { width: 45%; padding-left:15px; text-align: left; }
         .itin-evento-nombre { font-family:'Bodoni Moda',serif; font-style:italic; font-size:22px; font-weight:600; color:var(--noir-black); line-height: 1.1; }
 
-        /* ====== VESTIMENTA ====== */
-        .vestimenta-icons { display:flex; justify-content:center; gap: 30px; margin-top:20px; }
-        .vestimenta-icon-item { display:flex; flex-direction:column; align-items:center; gap:10px; }
-        .vestimenta-icon-item svg { width:35px; height:35px; fill:var(--maroon); }
-
         /* ====== INPUTS RSVP ====== */
         .rsvp-input-label { font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:8px; color: var(--gold-dark); text-align: left;}
-        .rsvp-input { width:100%; padding:15px; font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--noir-black); background:var(--cotton); border:1px solid rgba(129,1,0,0.2); border-radius: 4px; outline:none; transition: border-color 0.3s; box-sizing: border-box;}
-        .rsvp-input:focus { border-color:var(--cherry-red); background: var(--white);}
+        .rsvp-input { width:100%; padding:15px; font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--noir-black); background:var(--white); border:1px solid rgba(27,23,23,0.2); border-radius: 4px; outline:none; transition: border-color 0.3s; box-sizing: border-box;}
+        .rsvp-input:focus { border-color:var(--maroon); box-shadow: 0 0 0 3px rgba(99,0,0,0.1);}
         .rsvp-input-wrap { margin-bottom:20px; width: 100%; }
 
         /* ====== MISC ====== */
@@ -295,11 +289,12 @@
         .flower-petal { position:absolute; border-radius:150% 0 150% 0; pointer-events:none; animation:float-up infinite ease-in; opacity:0; }
         @keyframes float-up { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }
 
-        #music-control-btn { position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%; background: var(--maroon); border:2px solid var(--gold-primary); display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999; box-shadow:0 5px 15px rgba(99,0,0,0.4); opacity:0;visibility:hidden; }
+        #music-control-btn { position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%; background: var(--maroon); border:2px solid var(--gold-primary); display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999; box-shadow:0 5px 15px rgba(0,0,0,0.6); opacity:0;visibility:hidden; }
+        #music-control-btn:hover { background: var(--cherry-red); }
         #music-control-btn.visible { opacity:1;visibility:visible; }
         #music-control-btn svg { width:24px;height:24px;fill:var(--cotton); }
 
-        .invitation-footer { font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;color:var(--text-muted); padding: 30px 0 10px 0; font-weight:700; text-transform:uppercase; text-align: center; width: 100%;}
+        .invitation-footer { font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;color:var(--gold-dark); padding: 30px 0 10px 0; font-weight:700; text-transform:uppercase; text-align: center; width: 100%; z-index: 2; position: relative;}
     </style>
 </head>
 <body>
@@ -507,19 +502,8 @@
 
             <div class="content-box reveal">
                 <div class="section-heading">Vestimenta</div>
-                <div style="font-family:'Bodoni Moda',serif;font-size:30px;font-weight:700;letter-spacing:4px;color:var(--maroon);margin-top:10px;">FORMAL</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--cherry-red);margin-top:15px;line-height:1.4; font-weight:600;">Sugerimos evitar los colores negro y rojo, están reservados para la quinceañera.</div>
-                
-                <div class="vestimenta-icons">
-                    <div class="vestimenta-icon-item">
-                        <svg viewBox="0 0 24 24"><path d="M16 2l-1 3H9L8 2H4l2 5v13h12V7l2-5h-4M9.5 10a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 9.5 13 1.5 1.5 0 0 1 8 11.5 1.5 1.5 0 0 1 9.5 10m5 0a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 14.5 13 1.5 1.5 0 0 1 13 11.5 1.5 1.5 0 0 1 14.5 10Z"/></svg>
-                        <span class="vestimenta-icon-label">Damas</span>
-                    </div>
-                    <div class="vestimenta-icon-item">
-                        <svg viewBox="0 0 24 24"><path d="M7 2h10l-1.5 8H8.5L7 2M8.5 11l-1 11h9l-1-11H8.5M12 13v4m-2-2h4"/></svg>
-                        <span class="vestimenta-icon-label">Caballeros</span>
-                    </div>
-                </div>
+                <div style="font-family:'Bodoni Moda',serif;font-size:32px;font-weight:700;letter-spacing:4px;color:var(--noir-black);margin-top:15px;">FORMAL</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--cherry-red);margin-top:15px;line-height:1.4; font-weight:600;">Sugerimos evitar los colores negro y rojo, están reservados para la quinceañera.</div>
             </div>
 
             <div class="content-box reveal" style="padding-left: 0; padding-right: 0;">
