@@ -15,6 +15,7 @@
             
             --gold-primary: #d4af37;
             --gold-light: #f9e596;
+            --gold-dark: #9e7f1e;
             
             --text-muted: #4a4040;
             --white: #ffffff;
@@ -36,7 +37,7 @@
         body.content-active {
             overflow-y: auto; 
             overflow-x: hidden;
-            background-color: var(--noir-black); /* Fondo general negro */
+            background-color: var(--noir-black);
         }
 
         /* ====== ANIMACIONES REVEAL ====== */
@@ -63,7 +64,6 @@
             transition: opacity 1.2s ease-in-out, visibility 1.2s;
         }
         
-        /* Capa oscura semitransparente para el sobre */
         #envelope-screen::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(27, 23, 23, 0.75); z-index: 1;
@@ -133,20 +133,58 @@
             gap: 40px;
         }
 
-        /* ====== CAJAS Y CONTENEDORES ====== */
+        /* ====== CAJAS CLARAS ====== */
         .content-box {
             width: 100%;
             background: var(--cotton);
-            border: 1px solid rgba(212, 175, 55, 0.5); /* Borde dorado para contrastar con el negro */
+            border: 1px solid rgba(212, 175, 55, 0.5); 
             padding: 40px 25px;
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
+
+        /* ====== CAJAS ROJAS (NUEVAS) ====== */
+        .content-box-red {
+            width: 100%;
+            background: linear-gradient(135deg, var(--cherry-red), var(--maroon));
+            border: 1px solid var(--gold-primary);
+            padding: 45px 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(99, 0, 0, 0.3);
+            color: var(--cotton);
+        }
         
+        .content-box-red .section-heading { color: var(--cotton); border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 15px; display: inline-block;}
+        .content-box-red .info-label { color: var(--gold-light); }
+        .content-box-red .family-names { color: var(--white); }
+        
+        /* Botones en caja roja */
+        .content-box-red .btn-confirmar:not(.btn-outline) { background: var(--cotton); color: var(--maroon); font-weight: 700; border: 1px solid var(--gold-primary); }
+        .content-box-red .btn-confirmar svg { fill: var(--maroon); }
+        .content-box-red .btn-confirmar:hover { background: var(--gold-light); transform: translateY(-2px); }
+        
+        .content-box-red .btn-outline { border-color: var(--gold-light); color: var(--gold-light); background: transparent; }
+        .content-box-red .btn-outline:hover { background: rgba(255,255,255,0.1); color: var(--cotton); border-color: var(--cotton); }
+        .content-box-red .btn-outline svg { fill: var(--gold-light); }
+
+        /* Ajustes Itinerario en caja roja */
+        .content-box-red .itinerario-timeline::before { background: var(--cotton); opacity: 0.3; }
+        .content-box-red .itin-hora { color: var(--gold-light); }
+        .content-box-red .itin-evento-nombre { color: var(--cotton); }
+        .content-box-red .itin-node { box-shadow: 0 0 0 4px var(--cherry-red), 0 0 0 5px var(--gold-primary); }
+
+        /* Ajustes Inputs en caja roja */
+        .content-box-red .rsvp-input-label { color: var(--gold-light); }
+        .content-box-red .rsvp-input { background: rgba(255, 255, 255, 0.05); color: var(--cotton); border: 1px solid rgba(212, 175, 55, 0.4); }
+        .content-box-red .rsvp-input:focus { border-color: var(--gold-light); background: rgba(255, 255, 255, 0.1); }
+        .content-box-red .rsvp-input::placeholder { color: rgba(237, 235, 221, 0.5); }
+
+        /* ====== CAJA NEGRA (PARA PLAYLIST) ====== */
         .content-box-dark {
             width: 100%;
-            background: var(--noir-black); /* Integración del Noir Black en bloques */
+            background: var(--noir-black);
             border: 1px solid var(--gold-primary);
             padding: 45px 25px;
             border-radius: 8px;
@@ -154,13 +192,14 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
             color: var(--cotton);
         }
+        .content-box-dark .section-heading { color: var(--cotton); border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 15px; display: inline-block;}
 
         /* ====== FOTO HERO ====== */
         .hero-section { text-align: center; padding-top: 15px;}
         .hero-photo-wrap {
             width: 240px; height: 320px; margin: 0 auto 30px auto;
             border-radius: 120px 120px 0 0; padding: 6px; 
-            background: var(--maroon); /* Acento rojo oscuro */
+            background: var(--maroon);
             border: 1px solid var(--gold-primary);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
@@ -171,26 +210,18 @@
         .main-title { font-family:'Pinyon Script',cursive; font-size: 105px; color: var(--cotton); margin-bottom: 5px; line-height: 0.9; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
         
         .section-heading { font-family: 'Bodoni Moda', serif; font-size: 32px; font-weight: 700; letter-spacing: 2px; color: var(--maroon); margin-bottom: 20px; text-transform: uppercase;}
-        .content-box-dark .section-heading { color: var(--cotton); border-bottom: 1px solid rgba(212,175,55,0.4); padding-bottom: 15px; display: inline-block;}
         
         .section-tag { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 4px; color: var(--gold-light); text-transform: uppercase; margin-bottom: 15px; font-weight: 700; }
         .phrase { font-family:'Cormorant Garamond', serif; font-style:italic; font-size: 22px; color: var(--noir-black); line-height: 1.5; font-weight: 500; }
         
         .info-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--noir-black); text-transform: uppercase; margin-bottom: 5px; font-weight: 700; }
-        .content-box-dark .info-label { color: var(--gold-light); }
         .family-names { font-family:'Bodoni Moda',serif; font-size: 22px; font-weight: 600; font-style:italic; color: var(--cherry-red); line-height: 1.4; }
-        .content-box-dark .family-names { color: var(--white); }
 
-        /* ====== DIVIDER EDITORIAL ====== */
-        .divider-ornate { display:flex; align-items:center; justify-content:center; gap: 15px; width: 80%; margin: 0 auto; }
-        .divider-ornate::before, .divider-ornate::after { content:''; flex:1; height:1px; background: var(--maroon); opacity: 0.3; }
-        .divider-ornate-diamond { width: 8px; height: 8px; background: var(--gold-primary); transform: rotate(45deg); flex-shrink:0; }
-
-        /* ====== COUNTDOWN ====== */
+        /* ====== COUNTDOWN EN ROJO ====== */
         .countdown-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; width: 100%; margin-top: 20px;}
-        .countdown-item { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.3); padding: 15px 5px; border-radius: 6px; }
-        .countdown-number { font-family:'Bodoni Moda',serif; font-size: clamp(24px, 6vw, 32px); font-weight: 700; color: var(--cotton); line-height: 1;}
-        .countdown-label { font-family:'Cinzel',sans-serif; font-size: 9px; text-transform:uppercase; letter-spacing: 2px; color: var(--gold-light); font-weight: 600; margin-top: 5px; }
+        .content-box-red .countdown-item { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.3); padding: 15px 5px; border-radius: 6px; }
+        .content-box-red .countdown-number { font-family:'Bodoni Moda',serif; font-size: clamp(24px, 6vw, 32px); font-weight: 700; color: var(--cotton); line-height: 1;}
+        .content-box-red .countdown-label { font-family:'Cinzel',sans-serif; font-size: 9px; text-transform:uppercase; letter-spacing: 2px; color: var(--gold-light); font-weight: 600; margin-top: 5px; }
 
         /* ====== CALENDARIO RESPONSIVO ====== */
         .calendar-widget { background: var(--white); border: 1px solid rgba(129,1,0,0.15); border-radius: 8px; padding: 25px 15px; margin-top: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); width: 100%; }
@@ -245,10 +276,6 @@
         .btn-confirmar:hover { background: var(--cherry-red); transform: translateY(-2px); }
         .btn-confirmar svg { width: 18px; height: 18px; fill: var(--cotton); flex-shrink: 0; }
         
-        .content-box-dark .btn-confirmar { background: var(--maroon); color: var(--cotton); border: 1px solid var(--gold-primary); }
-        .content-box-dark .btn-confirmar svg { fill: var(--cotton); }
-        .content-box-dark .btn-confirmar:hover { background: var(--cherry-red); }
-
         .btn-outline { background: transparent; border: 1px solid var(--maroon); color: var(--maroon); box-shadow: none; }
         .btn-outline:hover { background: rgba(99,0,0,0.05); color: var(--cherry-red); }
         .btn-outline svg { fill: var(--maroon); }
@@ -267,12 +294,9 @@
         .itinerario-timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background: var(--noir-black); opacity: 0.2; transform:translateX(-50%); }
         
         .itin-row { display:flex; align-items:center; width: 100%; position:relative; margin-bottom: 30px; }
-        
         .itin-hora { width: 45%; text-align:right; padding-right:15px; font-family:'Cinzel',serif; font-size:13px; font-weight:700; letter-spacing:2px; color:var(--cherry-red); }
-        
         .itin-center { width: 10%; display: flex; justify-content: center; position: relative; z-index: 2; }
         .itin-node { width: 10px; height: 10px; background: var(--gold-primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--cotton), 0 0 0 5px var(--maroon); }
-        
         .itin-evento { width: 45%; padding-left:15px; text-align: left; }
         .itin-evento-nombre { font-family:'Bodoni Moda',serif; font-style:italic; font-size:22px; font-weight:600; color:var(--noir-black); line-height: 1.1; }
 
@@ -289,8 +313,8 @@
         .flower-petal { position:absolute; border-radius:150% 0 150% 0; pointer-events:none; animation:float-up infinite ease-in; opacity:0; }
         @keyframes float-up { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }
 
-        #music-control-btn { position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%; background: var(--maroon); border:2px solid var(--gold-primary); display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999; box-shadow:0 5px 15px rgba(0,0,0,0.6); opacity:0;visibility:hidden; }
-        #music-control-btn:hover { background: var(--cherry-red); }
+        #music-control-btn { position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%; background: var(--maroon); border:2px solid var(--gold-primary); display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999; box-shadow:0 5px 15px rgba(0,0,0,0.6); opacity:0;visibility:hidden; transition: all 0.3s ease; }
+        #music-control-btn:hover { background: var(--cherry-red); transform: scale(1.1); }
         #music-control-btn.visible { opacity:1;visibility:visible; }
         #music-control-btn svg { width:24px;height:24px;fill:var(--cotton); }
 
@@ -391,6 +415,7 @@
     <main id="main-invitation">
         <div class="invitation-frame">
             
+            <!-- CAJA BLANCA 1 -->
             <div class="hero-section">
                 <div class="hero-photo-wrap reveal delay-1">
                     <img src="assets/hero.jpg" alt="Paula" class="hero-photo">
@@ -413,7 +438,8 @@
                 </div>
             </div>
 
-            <div class="content-box-dark reveal">
+            <!-- CAJA ROJA 1 -->
+            <div class="content-box-red reveal">
                 <div class="section-heading">Faltan</div>
                 <div class="countdown-grid" id="countdown-timer">
                     <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Días</span></div>
@@ -423,6 +449,7 @@
                 </div>
             </div>
 
+            <!-- CAJA BLANCA 2 -->
             <div class="content-box reveal">
                 <div class="section-heading">Cuándo</div>
                 
@@ -450,6 +477,7 @@
                 </button>
             </div>
 
+            <!-- CAJA BLANCA 3 -->
             <div class="content-box reveal">
                 <div class="section-heading">Dónde</div>
                 
@@ -469,7 +497,8 @@
                 </a>
             </div>
 
-            <div class="content-box reveal">
+            <!-- CAJA ROJA 2 -->
+            <div class="content-box-red reveal">
                 <div class="section-heading">Itinerario</div>
                 <div class="itinerario-timeline">
                     <div class="itin-row reveal">
@@ -500,12 +529,14 @@
                 </div>
             </div>
 
+            <!-- CAJA BLANCA 4 -->
             <div class="content-box reveal">
                 <div class="section-heading">Vestimenta</div>
-                <div style="font-family:'Bodoni Moda',serif;font-size:32px;font-weight:700;letter-spacing:4px;color:var(--noir-black);margin-top:15px;">FORMAL</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--cherry-red);margin-top:15px;line-height:1.4; font-weight:600;">Sugerimos evitar los colores negro y rojo, están reservados para la quinceañera.</div>
+                <div style="font-family:'Bodoni Moda',serif;font-size:30px;font-weight:700;letter-spacing:6px;color:var(--maroon);margin-top:15px;">FORMAL</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--cherry-red);margin-top:20px;line-height:1.5; font-weight:600;">Sugerimos evitar los colores negro y rojo. <br><span style="font-size: 18px; color: var(--text-muted); font-style: normal; font-weight: 500;">(Están reservados para la quinceañera)</span></div>
             </div>
 
+            <!-- CAJA BLANCA 5 -->
             <div class="content-box reveal" style="padding-left: 0; padding-right: 0;">
                 <div class="section-heading" style="padding: 0 25px;">Galería de Fotos</div>
                 <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cherry-red);font-style:italic; padding: 0 25px;">Desliza para ver más momentos especiales.</div>
@@ -531,6 +562,7 @@
                 <img id="lightbox-img" src="">
             </div>
 
+            <!-- CAJA NEGRA 1 -->
             <div class="content-box-dark reveal">
                 <div class="section-heading">Playlist</div>
                 <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(237,235,221,0.9);margin-bottom:25px;line-height:1.4;">¡Ayúdame a armar el soundtrack de esta noche! Agrega tus canciones favoritas.</div>
@@ -547,9 +579,10 @@
                 </a>
             </div>
 
-            <div class="content-box reveal">
+            <!-- CAJA ROJA 3 -->
+            <div class="content-box-red reveal">
                 <div class="section-heading">Cámara en Vivo</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--noir-black);margin-bottom:25px;line-height:1.4;">Ayúdanos a capturar los mejores momentos. Sube tus fotos y videos a nuestra carpeta compartida durante el evento.</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:25px;line-height:1.4;">Ayúdanos a capturar los mejores momentos. Sube tus fotos y videos a nuestra carpeta compartida durante el evento.</div>
 
                 <a href="https://drive.google.com/drive/folders/1l_iNjudDiLOoAS1aVdpXAlW9yC0cUzsO?usp=sharing" target="_blank" style="text-decoration: none;">
                     <button class="btn-confirmar btn-outline">
@@ -559,6 +592,7 @@
                 </a>
             </div>
 
+            <!-- CAJA BLANCA 6 -->
             <div class="content-box reveal">
                 <div class="section-heading">Confirmación</div>
                 <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--noir-black);margin-bottom:25px;line-height:1.4;">Será un honor contar con tu presencia en esta noche tan especial. Por favor confirma tu asistencia.</div>
@@ -572,11 +606,12 @@
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
                     Confirmar
                 </button>
+            </div>
                 
-                <div style="margin: 40px 0; border-top: 1px dashed rgba(129,1,0,0.2);"></div>
-
+            <!-- CAJA ROJA 4 -->
+            <div class="content-box-red reveal">
                 <div class="section-heading">Buenos Deseos</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--noir-black);margin-bottom:25px;line-height:1.4;">Deja un mensaje para Paula. Tu mensaje se guardará con cariño en esta nueva etapa.</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:25px;line-height:1.4;">Deja un mensaje para Paula. Tu mensaje se guardará con cariño en esta nueva etapa.</div>
                 
                 <form id="wish-form">
                     <div class="rsvp-input-wrap">
